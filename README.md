@@ -10,15 +10,15 @@ Our framework can not only accurately infer the higher-order structures of the s
 This respository provides HoGRC methods implemented in PyTorch. And the experimental data can be generated through code.
 
 ## Files
-- 'main_L63.py' is HGRC experiment for the Lorenz63 system, including data generation, model training and testing.
-- 'main_CL63.py' is HGRC experiment for the coupled Lorenz system.
-- 'main_rossler.py' is HGRC experiment for the Rossler system.
-- 'main_CRo.py' is HGRC experiment for the coupled Rossler system.
-- 'main_FHN.py' is HGRC experiment for the coupled FitzHugh-Nagumo system.
-- 'main_HR.py' is HGRC experiment for the coupled simplified Hodgkin–Huxley system.
-- 'main_L96.py' is HGRC experiment for the Lorenz96 system.
-- 'main_NFW.py' is HGRC experiment for the New Four Wings system.
-- 'main_colpitts' is HGRC experiment for the Colpitts system.
+- 'main_L63.py' is HoGRC experiment for the Lorenz63 system, including data generation, model training and testing.
+- 'main_CL63.py' is HoGRC experiment for the coupled Lorenz system.
+- 'main_rossler.py' is HoGRC experiment for the Rossler system.
+- 'main_CRo.py' is HoGRC experiment for the coupled Rossler system.
+- 'main_FHN.py' is HoGRC experiment for the coupled FitzHugh-Nagumo system.
+- 'main_HR.py' is HoGRC experiment for the coupled simplified Hodgkin–Huxley system.
+- 'main_L96.py' is HoGRC experiment for the Lorenz96 system.
+- 'main_NFW.py' is HoGRC experiment for the New Four Wings system.
+- 'main_colpitts' is HoGRC experiment for the Colpitts system.
 
 ## File folders
 - 'power_grid' folder contains the experiments for higher-order Kuramoto dynamics on the UK power grid.
