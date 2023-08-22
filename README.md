@@ -2,7 +2,7 @@
 Higher-order Granger reservoir computing
 
 This repository contains the code for the paper:
-- [(HoGRC) Higher-order Granger reservoir computing: Simultaneously achieving structures inference and accurate prediction of complex dynamics]
+- [Higher-order Granger reservoir computing: Simultaneously achieving structures inference and accurate prediction of complex dynamics]
 
 In this work, we formulate a new dynamic inference and prediction framework based on reservior computing and Granger causality. 
 Our framework can not only accurately infer the higher-order structures of the system, but also significantly outperforms the baseline methods in prediction tasks. 
