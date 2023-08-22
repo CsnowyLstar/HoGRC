@@ -20,9 +20,8 @@ This respository provides HoGRC methods implemented in PyTorch. And the experime
 - 'main_NFW.py' is HGRC experiment for the New Four Wings system.
 - 'main_colpitts' is HGRC experiment for the Colpitts system.
 
+## File folders
 - 'power_grid' folder contains the experiments for higher-order Kuramoto dynamics on the UK power grid.
-- 'draw' folder contains the drawing program and the corresponding pictures in pdf format.
-
 - 'models' folder: used to store model files
 - 'dataset' folder: used to store dataset files
 - 'results' folder: used to store results files
