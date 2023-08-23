@@ -30,12 +30,15 @@ def args():
     parser.add_argument('--threshold', type=float, default=0.01)
     #Parameters of RC 
     parser.add_argument('--warm_up', type=int, default=100)
-    parser.add_argument('--n_internal_units', type=int, default=1000)
+    parser.add_argument('--n_internal_units', type=int, default=500)
     parser.add_argument('--spectral_radius', type=float, default=0.9)
     parser.add_argument('--leak', type=float, default=0.1)
+    parser.add_argument('--leak1', type=float, default=0.4)
+    parser.add_argument('--leak2', type=float, default=0.3)
     parser.add_argument('--connectivity', type=float, default=0.02)
     parser.add_argument('--input_scaling', type=float, default=0.3) 
     parser.add_argument('--noise_level', type=float, default=0.00) 
+    parser.add_argument('--circle', type=bool, default=False)
     parser.add_argument('--alpha', type=float, default=10**(-8))
     #Parameters of other methods 
     parser.add_argument('--epochs', type=int, default=300) 

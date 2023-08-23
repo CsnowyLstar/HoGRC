@@ -15,7 +15,7 @@ def args():
     parser.add_argument('--device', type=str, default='cpu') 
     parser.add_argument('--model_ind', type=str, default='88') 
     parser.add_argument('--data_ind', type=str, default='CL') 
-    parser.add_argument('--net_nam', type=str, default='er') 
+    parser.add_argument('--net_nam', type=str, default='edges') 
     parser.add_argument('--direc', type=bool, default=True) 
     parser.add_argument('--nj', type=int, default=33) 
     #Parameters of experimental data 
@@ -36,9 +36,12 @@ def args():
     parser.add_argument('--n_internal_units', type=int, default=500)
     parser.add_argument('--spectral_radius', type=float, default=0.8)
     parser.add_argument('--leak', type=float, default=0.1)
+    parser.add_argument('--leak1', type=float, default=0.4)
+    parser.add_argument('--leak2', type=float, default=0.3)
     parser.add_argument('--connectivity', type=float, default=0.02)
     parser.add_argument('--input_scaling', type=float, default=0.5) 
     parser.add_argument('--noise_level', type=float, default=0.00) 
+    parser.add_argument('--circle', type=bool, default=False)
     parser.add_argument('--alpha', type=float, default=10**(-4))
     #Parameters of other methods 
     parser.add_argument('--epochs', type=int, default=300) 

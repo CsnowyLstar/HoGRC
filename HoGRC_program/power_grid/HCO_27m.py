@@ -15,7 +15,7 @@ def args():
     parser.add_argument('--device', type=str, default='cpu') 
     parser.add_argument('--model_ind', type=str, default='88') 
     parser.add_argument('--data_ind', type=str, default='CL') 
-    parser.add_argument('--net_nam', type=str, default='er') 
+    parser.add_argument('--net_nam', type=str, default='edges') 
     parser.add_argument('--direc', type=bool, default=True) 
     parser.add_argument('--nj', type=int, default=0) 
     #Parameters of experimental data 
@@ -33,12 +33,15 @@ def args():
     parser.add_argument('--threshold', type=float, default=0.1)
     #Parameters of RC 
     parser.add_argument('--warm_up', type=int, default=100)
-    parser.add_argument('--n_internal_units', type=int, default=1000)
+    parser.add_argument('--n_internal_units', type=int, default=500)
     parser.add_argument('--spectral_radius', type=float, default=0.8)
     parser.add_argument('--leak', type=float, default=0.1)
+    parser.add_argument('--leak1', type=float, default=0.4)
+    parser.add_argument('--leak2', type=float, default=0.3)
     parser.add_argument('--connectivity', type=float, default=0.02)
     parser.add_argument('--input_scaling', type=float, default=0.5) 
     parser.add_argument('--noise_level', type=float, default=0.00) 
+    parser.add_argument('--circle', type=bool, default=False)
     parser.add_argument('--alpha', type=float, default=10**(-4))
     #Parameters of other methods 
     parser.add_argument('--epochs', type=int, default=300) 
@@ -382,6 +385,7 @@ def test2(args, internal_weights, input_weights, start2s, start3s, steps):
     preds2s = np.zeros((len(start2s),n,steps,V))
     error2s = np.zeros((len(start2s),n,steps,V))
     for i in range(len(start2s)):
+        print("multi steps (train): " + str(i))
         start2 = start2s[i]        
         preds2 = np.zeros((n,steps,V)) 
         pre_theta2 = np.zeros((n,steps,1))
@@ -407,6 +411,7 @@ def test2(args, internal_weights, input_weights, start2s, start3s, steps):
     preds3s = np.zeros((len(start3s),n,steps,V))
     error3s = np.zeros((len(start3s),n,steps,V))
     for i in range(len(start3s)):
+        print("multi steps (test): " + str(i))
         start3 = start3s[i]        
         preds3 = np.zeros((n,steps,V)) 
         pre_theta3 = np.zeros((n,steps,1))
@@ -511,15 +516,15 @@ def sav_er1(preds2s,preds3s,error2s,error3s):
             error_3 = np.abs(error3s[:,ni,:,vj])
             error_2pd = pd.DataFrame(error_2)
             error_3pd = pd.DataFrame(error_3)
-            error_2pd.to_csv('error27m'+str(ni)+'_'+str(vj)+'_2.csv')
-            error_3pd.to_csv('error27m'+str(ni)+'_'+str(vj)+'_3.csv')
+            error_2pd.to_csv('results/error27m'+str(ni)+'_'+str(vj)+'_2.csv')
+            error_3pd.to_csv('results/error27m'+str(ni)+'_'+str(vj)+'_3.csv')
     return()
 
 def sav_er2(preds2s,preds3s,error2s,error3s):
     s2 = pd.DataFrame(preds2s.reshape(num*args.n*steps,args.V))
     s3 = pd.DataFrame(preds3s.reshape(num*args.n*steps,args.V))
-    s2.to_csv('pred2s27m_2.csv')
-    s3.to_csv('pred3s27m_3.csv')
+    s2.to_csv('results/pred2s27m_2.csv')
+    s3.to_csv('results/pred3s27m_3.csv')
 
 if __name__ == '__main__':
     
@@ -532,9 +537,11 @@ if __name__ == '__main__':
     Xsn, theta, time_point, edges_in, edges_ex, edges_out, Sd = read_data()
 
     # train and test 
+    print("train and one step prediction...")
     internal_weights,input_weights,preds,error = test1(args)
     
     # multi steps prediction
+    print("multi steps prediction...")
     ntr = int(args.T*args.qtr)
     steps = 1000
     num = 5
