@@ -45,6 +45,7 @@ python -m An_Example_for_Task_2
 - 'main_L96.py' is HoGRC experiment for the Lorenz96 system.
 - 'main_NFW.py' is HoGRC experiment for the New Four Wings system.
 - 'main_colpitts' is HoGRC experiment for the Colpitts system.
+  
 Please refer to the code comments and the "workflow.md" file for detailed execution specifics of these experiments.
 
 ## File folders
