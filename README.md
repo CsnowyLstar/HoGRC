@@ -29,7 +29,7 @@ pip install -r requirements.txt
 ```python
 python -m An_Example_for_Task_1
 ```
-- 'An_Example_for_Task_2.py' serves as an example for prediction of the CRos system using different methods, and the results are displayed in Figs. 3a and 3c in the main text.
+- 'An_Example_for_Task_2.py' serves as an example for prediction of the coupled FitzHugh-Nagumo system using different methods, and the results are displayed in Figs. 3a and 3c in the main text.
 ```python
 python -m An_Example_for_Task_2
 ```
