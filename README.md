@@ -19,6 +19,7 @@ To run this project, we will need to set up an environment with Python 3 and ins
 - scipy 1.11.4
 - scikit-learn 1.3.2
 - torch 2.1.2
+- torchdiffeq 0.2.3
 
 ```python
 pip install -r requirements.txt
