@@ -10,7 +10,7 @@ Our framework can not only accurately infer the higher-order structures of the s
 This respository provides HoGRC methods implemented in PyTorch. And the experimental data can be generated through code.
 
 ## Environment 
-To run this code, you will need the following specific software versions:
+To execute the code successfully, ensure the following packages with the specified versions are installed in your environment:
 - Python 3.9.7
 - joblib 1.3.2
 - matplotlib 3.8.2
