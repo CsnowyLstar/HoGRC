@@ -14,10 +14,10 @@ To run this project, we will need to set up an environment with Python 3 and ins
 - Python 3.9.7
 - joblib 1.3.2
 - matplotlib 3.8.2
-- numpy 1.22.4
+- numpy 1.26.2
 - pandas 2.1.4
 - scipy 1.11.4
-- scikit-learn 0.0
+- scikit-learn 1.3.2
 - torch 2.1.2
 
 ```python

@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 def args(): 
     parser = argparse.ArgumentParser() 
     parser.add_argument('--device', type=str, default='cpu') 
-    parser.add_argument('--model_ind', type=str, default='88m_multi') 
+    parser.add_argument('--model_ind', type=str, default='HoGRC') 
     parser.add_argument('--data_ind', type=str, default='CL') 
     parser.add_argument('--net_nam', type=str, default='er') 
     parser.add_argument('--direc', type=bool, default=True) 
