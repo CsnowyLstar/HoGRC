@@ -15,10 +15,10 @@ def calculate_aic(n,mse,num_params):
 
 def library_matching(df1,df2):
     new_data = pd.DataFrame()
-    for ii in range(len(df1._stat_axis.values.tolist())):
-        if df1._stat_axis.values.tolist()[ii] != 'constant':
+    for ii in range(len(df1.index.values.tolist())):
+        if df1.index.values.tolist()[ii] != 'constant':
             #index_name = df2.columns.values.tolist()[df2.columns.values.tolist().index(df1._stat_axis.values.tolist()[ii])]
-            index_name = df1._stat_axis.values.tolist()[ii]
+            index_name = df1.index.values.tolist()[ii]
             tmp = df2[index_name]
             new_data = pd.concat([new_data,tmp],axis=1)
     return new_data
@@ -41,7 +41,8 @@ def terms_sort_Lars(X_lib,Y_goal,intercept):
     return Score, mse, aic, sort
     
 def terms_sort_Lasso(X_lib,Y_goal,intercept):
-    reg = LassoCV(cv=5, fit_intercept=intercept, n_jobs=-1, max_iter=1000, normalize=False).fit(X_lib,Y_goal)
+    #reg = LassoCV(cv=5, fit_intercept=intercept, n_jobs=-1, max_iter=1000, normalize=False).fit(X_lib,Y_goal)
+    reg = LassoCV(cv=5, fit_intercept=intercept, n_jobs=-1, max_iter=1000).fit(X_lib,Y_goal)
     coef = pd.Series(reg.coef_, index=X_lib.columns)
     if intercept == True:
         coef['constant'] = reg.intercept_
@@ -68,8 +69,8 @@ def random_batch_generation(X,y,Number,batch_number):
         end = int((sample_list[i]+1)*Xlen) 
         tmp1 = X.iloc[start:end,:] 
         tmp2 = y.iloc[start:end,:]
-        X_sample = X_sample.append(tmp1)
-        y_sample = y_sample.append(tmp2)
+        X_sample = X_sample._append(tmp1)
+        y_sample = y_sample._append(tmp2)
     return X_sample, y_sample, sample_list
     
 def PhaseOne(FuncMatrix, NumDiv, Nnodes, dim, Dim, keep, Lambda, plotstart, plotend):
@@ -106,7 +107,8 @@ def PhaseOne(FuncMatrix, NumDiv, Nnodes, dim, Dim, keep, Lambda, plotstart, plot
     out = np.array(y)
     y1 = (out[:,dim])
 
-    reg1 = LassoCV(cv=5, fit_intercept=True, n_jobs=-1, max_iter=10000, normalize=False).fit(Xin, y1)
+    #reg1 = LassoCV(cv=5, fit_intercept=True, n_jobs=-1, max_iter=10000, normalize=False).fit(Xin, y1)
+    reg1 = LassoCV(cv=5, fit_intercept=True, n_jobs=-1, max_iter=10000).fit(Xin, y1)
     print(reg1.score(Xin,y1))
     print('Best threshold: %.3f' % reg1.alpha_)
     for i in range(len(reg1.coef_)):
@@ -288,7 +290,8 @@ def PhaseTwo(Matrix, NumDiv, Nnodes, dim, keep, SampleTime, batchsize, Lambda, i
     #InferredResults.to_csv('InferredEquation_of_'+str(dim+1)+'-dimension.csv', index=True, header=True)
     return InferredResults, aic_final
 
-def TwoPhaseInference(FuncMatrix, NumDiv, Nnodes, dim, Dim, keep, SampleTime, batchsize, Lambda, plotstart, plotend):
+def TwoPhaseInference(Matrix, NumDiv, n, dim, V, Keep, SampleTimes, Batchsize, Lambda, plotstart, plotend):
+    FuncMatrix = Matrix; Nnodes=n; Dim=V; keep=Keep; SampleTime=SampleTimes; batchsize=Batchsize
     PhaseOne_series,intercept,imp_cons,imp_no_cons = PhaseOne(FuncMatrix, NumDiv, Nnodes, dim, Dim, keep, Lambda, plotstart, plotend)
     InferredResults, aic_final = PhaseTwo(FuncMatrix, NumDiv, Nnodes, dim, keep, SampleTime, batchsize, Lambda, intercept,imp_cons,imp_no_cons)
     return InferredResults, PhaseOne_series, aic_final, intercept  
