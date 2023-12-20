@@ -21,7 +21,6 @@ To run this project, we will need to set up an environment with Python 3 and ins
 - torch 2.1.2
 
 ```python
-# install requirements
 pip install -r requirements.txt
 ```
 
