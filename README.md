@@ -10,7 +10,7 @@ Our framework can not only accurately infer the higher-order structures of the s
 This respository provides HoGRC methods implemented in PyTorch. And the experimental data can be generated through code.
 
 ## Environment 
-To execute the code successfully, ensure the following packages with the specified versions are installed in your environment:
+To run this project, we will need to set up an environment with Python 3 and install the following Python packages:
 - Python 3.9.7
 - joblib 1.3.2
 - matplotlib 3.8.2
@@ -45,7 +45,7 @@ python -m An_Example_for_Task_2
 - 'main_L96.py' is HoGRC experiment for the Lorenz96 system.
 - 'main_NFW.py' is HoGRC experiment for the New Four Wings system.
 - 'main_colpitts' is HoGRC experiment for the Colpitts system.
-  
+
 Please refer to the code comments and the "workflow.md" file for detailed execution specifics of these experiments.
 
 ## File folders
