@@ -1,5 +1,5 @@
 ##############################################################################################################
-# This code serves as an example for prediction of the CRos system using different methods.
+# This code serves as an example for prediction of the FHN system using different methods.
 # The prediction results obtained from this code are displayed in Figures 3a and 3c in the main text. 
 # Other dynamics prediction experiments can be conducted in the same way by selecting different methods.
 ##############################################################################################################
@@ -72,7 +72,8 @@ def gen_data(data):
 gen_data(data)
 
 methods = ['RC', 'PRC', 'HoGRC']
-lens3s = np.zeros((len(methods)))
+num = 5
+lens3s = np.zeros((len(methods),num))
 
 for mi in range(len(methods)):
     model_ind = methods[mi]
@@ -137,11 +138,10 @@ for mi in range(len(methods)):
     Vj = 0
     preds,error = experiment.evalue1()
     print("Total error:", np.mean(np.abs(error)))
-    print("Train error:", np.mean(np.abs(error[:,:,:ntr-args.warm_up,:])), np.mean(np.abs(error[:,nj,:ntr-args.warm_up,Vj])))
-    print("Test error:", np.mean(np.abs(error[:,:,ntr-args.warm_up:,:])), np.mean(np.abs(error[:,nj,ntr-args.warm_up:,Vj])))
+    print("Train error:", np.mean(np.abs(error[:,:,:ntr-args.warm_up,:])))
+    print("Test error:", np.mean(np.abs(error[:,:,ntr-args.warm_up:,:])))
     
     steps = 1500
-    num = 5
     start2s = (np.linspace(args.warm_up,ntr-steps,num+2)[1:-1]).astype(int)
     start3s = (np.linspace(ntr,args.T-steps,num+2)[1:-1]).astype(int)
     def multi():
@@ -165,9 +165,11 @@ for mi in range(len(methods)):
         return(preds2s,preds3s,error2s,error3s,lens2,lens3)
         
     preds2s,preds3s,error2s,error3s,lens2,lens3 = sav_er2()
-    lens3s[mi] = np.mean(lens3)
+    lens3s[mi,:] = lens3
    
 print("########### Final results ############")
 print("VPS results:")
 for mi in range(len(methods)):
-    print(methods[mi],'mean VPS:',lens3s[mi])                                    
+    print(methods[mi],'mean VPS:',lens3s[mi].mean())         
+
+                          

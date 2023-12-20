@@ -117,7 +117,7 @@ for hoi in range(len(hos)):
     ### (5) Model testing                                        ###
     ################################################################
     nj = 0
-    Vj = 0
+    Vj = 2
     preds,error = experiment.evalue1()
     print("Total error:", np.mean(np.abs(error)))
     print("Train error:", np.mean(np.abs(error[:,:,:ntr-args.warm_up,:])), np.mean(np.abs(error[:,nj,:ntr-args.warm_up,Vj])))
