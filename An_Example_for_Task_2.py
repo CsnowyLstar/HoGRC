@@ -1,6 +1,7 @@
 ##############################################################################################################
 # This code serves as an example for prediction of the FHN system using different methods.
 # The prediction results obtained from this code are displayed in Figures 3a and 3c in the main text. 
+# As an example, we randomly selected five points to calculate the predictable steps, and the results in the paper represent the average of 50 trials.
 # Other dynamics prediction experiments can be conducted in the same way by selecting different methods.
 ##############################################################################################################
 import argparse
@@ -34,7 +35,7 @@ def args():
     parser.add_argument('--sigma', type=float, default=1.2)
     parser.add_argument('--noise_sigma', type=float, default=0)
     parser.add_argument('--ob_noise', type=float, default=0.001)
-    parser.add_argument('--qtr', type=float, default=0.6)
+    parser.add_argument('--qtr', type=float, default=0.5)
     parser.add_argument('--threshold', type=float, default=0.01)
     #Parameters of RC 
     parser.add_argument('--warm_up', type=int, default=100)
@@ -141,7 +142,7 @@ for mi in range(len(methods)):
     print("Train error:", np.mean(np.abs(error[:,:,:ntr-args.warm_up,:])))
     print("Test error:", np.mean(np.abs(error[:,:,ntr-args.warm_up:,:])))
     
-    steps = 1500
+    steps = 2000
     start2s = (np.linspace(args.warm_up,ntr-steps,num+2)[1:-1]).astype(int)
     start3s = (np.linspace(ntr,args.T-steps,num+2)[1:-1]).astype(int)
     def multi():
@@ -171,5 +172,4 @@ print("########### Final results ############")
 print("VPS results:")
 for mi in range(len(methods)):
     print(methods[mi],'mean VPS:',lens3s[mi].mean())         
-
-                          
+                         
