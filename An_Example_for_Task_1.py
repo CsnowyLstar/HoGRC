@@ -134,19 +134,27 @@ for hoi in range(len(hos)):
     er.to_csv('results/er'+model_ind+'_'+ho+'.csv')
     errors[hoi] = er
 
-fig = plt.figure(figsize=(15,10))
+fig = plt.figure(figsize=(25,10))
 font1 = {'family':'Times New Roman', 'weight':'normal','size':40}
 width = 0.8
 x=np.arange(len(errors))
 l=errors[:,1,2]
 labels = np.arange(len(hos))
 plt.bar(x, l, width=width, tick_label = labels,fc = 'g',label='x')   
-plt.scatter(x[-2], l[-2], marker ='*', color = 'r', s=800)  
-plt.ylim(ymin = 0, ymax = 0.0000099)    
+plt.scatter(x[-2], l[-2]+4e-6, marker ='*', color = 'r', s=800)  
+plt.text(0-0.1,1e-6,'{{x,y,z}}',size=35,rotation='vertical')
+plt.text(1-0.1,1e-6,'{{x,y},{x,z},{y,z}}',size=35,rotation='vertical')
+plt.text(2-0.1,1e-6,'{{x,y},{x,z}}',size=35,rotation='vertical')
+plt.text(3-0.1,1e-6,'{{x,y}}',size=35,rotation='vertical')
+plt.text(4-0.1,1e-6,'{{x,z}}',size=35,rotation='vertical')
+plt.text(5-0.1,1e-6,'{{x,y},{z}}',size=35,rotation='vertical')
+plt.text(6-0.1,1e-6,'{{x},{y},{z}}',size=35,rotation='vertical')
+plt.ylim(ymin = 0, ymax = 0.00002)    
+plt.xlabel("Candidate complexes",size=35)
+plt.ylabel(r"e(z)",size=35)
 plt.tick_params(labelsize=35)
 plt.savefig("results/task1.png")
 
 print("###################################################")
 print("One-step Prediction Error with different candidate neighbors:")
 print(l)
-    
