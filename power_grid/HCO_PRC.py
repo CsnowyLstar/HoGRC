@@ -382,6 +382,10 @@ def test2(args, internal_weights, input_weights, start2s, start3s, steps):
     
     res_states = get_states(internal_weights, input_weights, Xsn, n_drop=0, bidir=False) 
 
+    readout_dict = {}
+    for ni in range(n):
+        readout_dict[(ni)] = joblib.load('./models/model/readout'+str(ni)+'.pkl')        
+
     preds2s = np.zeros((len(start2s),n,steps,V))
     error2s = np.zeros((len(start2s),n,steps,V))
     for i in range(len(start2s)):
@@ -395,7 +399,8 @@ def test2(args, internal_weights, input_weights, start2s, start3s, steps):
         current_theta = theta[0,:,start2-1,0]
         for j in range(steps):
             for ni in range(n):
-                readout = joblib.load('./models/model/readout'+str(ni)+'.pkl')
+                readout = readout_dict[(ni)]
+                #readout = joblib.load('./models/model/readout'+str(ni)+'.pkl')
                 X = previous_states[:,(ni*args.V)*args.n_internal_units:((ni+1)*args.V)*args.n_internal_units]
                 current_theta[ni] = readout.predict(X)[0][0]*args.dt + current_theta[ni]
                 current_input[:,ni,0] = np.sin(current_theta[ni])
@@ -421,7 +426,8 @@ def test2(args, internal_weights, input_weights, start2s, start3s, steps):
         current_theta = theta[0,:,start3-1,0]
         for j in range(steps):
             for ni in range(n):
-                readout = joblib.load('./models/model/readout'+str(ni)+'.pkl')
+                readout = readout_dict[(ni)]
+                #readout = joblib.load('./models/model/readout'+str(ni)+'.pkl')
                 X = previous_states[:,(ni*args.V)*args.n_internal_units:((ni+1)*args.V)*args.n_internal_units]
                 current_theta[ni] = readout.predict(X)[0][0]*args.dt + current_theta[ni]
                 current_input[:,ni,0] = np.sin(current_theta[ni])
