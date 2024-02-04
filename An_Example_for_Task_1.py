@@ -18,43 +18,48 @@ import matplotlib.pyplot as plt
 ################################################################
 def args(): 
     parser = argparse.ArgumentParser() 
-    parser.add_argument('--device', type=str, default='cpu') 
-    parser.add_argument('--model_ind', type=str, default='HoGRC') 
-    parser.add_argument('--data_ind', type=str, default='CL') 
-    parser.add_argument('--net_nam', type=str, default='er') 
-    parser.add_argument('--direc', type=bool, default=True) 
-    parser.add_argument('--nj', type=int, default=0) 
+    parser.add_argument('--device', type=str, default='cpu', help='Device to use for computation (e.g., "cpu", "cuda").') 
+    parser.add_argument('--model_ind', type=str, default='HoGRC', help='Method identifier.') 
+    parser.add_argument('--data_ind', type=str, default='CL', help='Data identifier.') 
+    parser.add_argument('--net_nam', type=str, default='er', help='Network name.') 
+    parser.add_argument('--direc', type=bool, default=True, help='Direction of network (True for directed).') 
+    parser.add_argument('--nj', type=int, default=0, help='the nj-th variable.') 
+    
     #Parameters of experimental data 
-    parser.add_argument('--N', type=int, default=1) 
-    parser.add_argument('--n', type=int, default=1) 
-    parser.add_argument('--T', type=int, default=5000)
-    parser.add_argument('--V', type=int, default=3)
-    parser.add_argument('--dt', type=float, default=0.02)
-    parser.add_argument('--ddt', type=float, default=0.001)
-    parser.add_argument('--couple_str', type=float, default=1)
-    parser.add_argument('--sigma', type=float, default=1)
-    parser.add_argument('--noise_sigma', type=float, default=0)
-    parser.add_argument('--ob_noise', type=float, default=0.0)
-    parser.add_argument('--qtr', type=float, default=0.6)
-    parser.add_argument('--threshold', type=float, default=0.01)
+    parser.add_argument('--N', type=int, default=1, help='Number of samples.') 
+    parser.add_argument('--n', type=int, default=1, help='Number of subsystem') 
+    parser.add_argument('--T', type=int, default=5000, help='Number of data points.')
+    parser.add_argument('--V', type=int, default=3, help='Number of dimension in a subsystem.')
+    parser.add_argument('--dt', type=float, default=0.02, help='Sampling time step size.')
+    parser.add_argument('--ddt', type=float, default=0.001, help='Simulating time step size.')
+    parser.add_argument('--couple_str', type=float, default=1, help='Coupling strength.')
+    parser.add_argument('--noise_sigma', type=float, default=0.0, help='Noise strength.')
+    parser.add_argument('--ob_noise', type=float, default=0.0, help='Observational noise strength.')
+    parser.add_argument('--qtr', type=float, default=0.6, help='Training ratio.')
+    parser.add_argument('--threshold', type=float, default=0.01, help='Threshold value for VPS index.')
+    
     #Parameters of RC 
-    parser.add_argument('--warm_up', type=int, default=50)
-    parser.add_argument('--n_internal_units', type=int, default=1000)
-    parser.add_argument('--spectral_radius', type=float, default=0.85)
-    parser.add_argument('--leak', type=float, default=0.05)
-    parser.add_argument('--connectivity', type=float, default=0.02)
-    parser.add_argument('--input_scaling', type=float, default=0.1) 
-    parser.add_argument('--noise_level', type=float, default=0) 
-    parser.add_argument('--alpha', type=float, default=10**(-8))
-    #Parameters of other methods 
-    parser.add_argument('--epochs', type=int, default=300) 
-    parser.add_argument('--batchs', type=int, default=300)
-    parser.add_argument('--lr', type=float, default=0.2)
-    parser.add_argument('--weight_decay', type=float, default=1e-3)
+    parser.add_argument('--warm_up', type=int, default=50, help='Warm-up period for reservoir.')
+    parser.add_argument('--n_internal_units', type=int, default=1000, help='Number of internal units in reservoir.')
+    parser.add_argument('--spectral_radius', type=float, default=0.85, help='Spectral radius of the reservoir adjacency matrix.')
+    parser.add_argument('--leak', type=float, default=0.05, help='Leak rate of the reservoir.')
+    parser.add_argument('--sigma', type=float, default=1, help='Dynamical bias for reservoir.')
+    parser.add_argument('--connectivity', type=float, default=0.02, help='Connectivity of the reservoir.')
+    parser.add_argument('--input_scaling', type=float, default=0.1, help='Input scaling factor for reservoir.')
+    parser.add_argument('--noise_level', type=float, default=0, help='Noise level for reservoir.')
+    parser.add_argument('--alpha', type=float, default=10**(-8), help='Regularization coefficient (ridge regression).')
+
+    # Parameters of other methods
+    parser.add_argument('--epochs', type=int, default=300, help='Number of training epochs.')
+    parser.add_argument('--batchs', type=int, default=300, help='Batch size for training.')
+    parser.add_argument('--lr', type=float, default=0.2, help='Learning rate.')
+    parser.add_argument('--weight_decay', type=float, default=1e-3, help='Weight decay (L2 penalty).')
+
     args = parser.parse_args(args=[])
     return(args) 
     
 args = args() 
+
 
 model_ind = 'HoGRC'
     
