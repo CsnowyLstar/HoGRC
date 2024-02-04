@@ -1,3 +1,4 @@
+When conducting experiments on the power grid, the working directory should be set to the current folder.
 
 Firstly, execute "gen_data.py" to generate the dataset. 
 
