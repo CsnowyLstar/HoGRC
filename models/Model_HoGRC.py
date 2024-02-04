@@ -156,7 +156,7 @@ class model():
         print("Training complete")
 
     def evalue1(self):
-        print("evalue...")
+        print("evaluate...")
         reservoir = self.reservoir
         args, Xsn = self.args, self.Xsn
         N, n, T, V = args.N, args.n, args.T, args.V
@@ -164,10 +164,16 @@ class model():
         Ni = 0
         res_states = reservoir.get_states(Xsn, n_drop=0, bidir=False)
         
+        readout_dict = {}
+        for ni in range(n):
+            for Vi in range(V):
+                readout_dict[(ni, Vi)] = joblib.load('./models/model/readout'+str(ni)+'_'+str(Vi)+'.pkl')
+        
         preds = np.zeros((N,n,T-warm_up,V))
         for ni in range(n):
             for Vi in range(V):
-                readout = joblib.load('./models/model/readout'+str(ni)+'_'+str(Vi)+'.pkl')
+                readout = readout_dict[(ni, Vi)]
+                #readout = joblib.load('./models/model/readout'+str(ni)+'_'+str(Vi)+'.pkl')
                 for i in range(T-warm_up):
                     X = res_states[:,i+warm_up-1,(ni*V+Vi)*args.n_internal_units:(ni*V+Vi+1)*args.n_internal_units]
                     preds[Ni,ni,i,Vi] = readout.predict(X)*args.dt+Xsn[:,ni,i+warm_up-1,Vi].numpy()  
@@ -181,6 +187,11 @@ class model():
         Ni = 0
         res_states = reservoir.get_states(Xsn, n_drop=0, bidir=False)
  
+        readout_dict = {}
+        for ni in range(n):
+            for Vi in range(V):
+                readout_dict[(ni, Vi)] = joblib.load('./models/model/readout'+str(ni)+'_'+str(Vi)+'.pkl')
+ 
         preds2s = np.zeros((len(start2s),N,n,steps,V))
         error2s = np.zeros((len(start2s),N,n,steps,V))
         for i in range(len(start2s)):
@@ -192,7 +203,8 @@ class model():
             for j in range(steps):
                 for ni in range(n):
                     for Vi in range(args.V): 
-                        readout = joblib.load('./models/model/readout'+str(ni)+'_'+str(Vi)+'.pkl')
+                        readout = readout_dict[(ni, Vi)]
+                        #readout = joblib.load('./models/model/readout'+str(ni)+'_'+str(Vi)+'.pkl')
                         X = previous_states[:,(ni*args.V+Vi)*args.n_internal_units:(ni*args.V+Vi+1)*args.n_internal_units]
                         current_input[:,ni,Vi] = readout.predict(X)*args.dt + current_input[:,ni,Vi]
                 preds2[Ni,:,j,:] = current_input[0] 

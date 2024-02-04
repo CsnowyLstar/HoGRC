@@ -152,7 +152,7 @@ class model():
         print("Training complete")
 
     def evalue1(self):
-        print("evalue...")
+        print("evaluate...")
         reservoir, args, Xsn = self.reservoir, self.args, self.Xsn
         N, n, T, V, dt = args.N, args.n, args.T, args.V, args.dt
         warm_up = args.warm_up
