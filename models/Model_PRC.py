@@ -226,9 +226,9 @@ class model():
                 for ni in range(n):
                     for Vi in range(args.V): 
                     	readout = readout_dict[(ni, Vi)]
-                        #readout = joblib.load('./models/model/readout'+str(ni)+'_'+str(Vi)+'.pkl')
-                        X = previous_states[:,(ni*args.V+Vi)*args.n_internal_units:(ni*args.V+Vi+1)*args.n_internal_units]
-                        current_input[:,ni,Vi] = readout.predict(X)*args.dt + current_input[:,ni,Vi]
+                    #readout = joblib.load('./models/model/readout'+str(ni)+'_'+str(Vi)+'.pkl')
+                    X = previous_states[:,(ni*args.V+Vi)*args.n_internal_units:(ni*args.V+Vi+1)*args.n_internal_units]
+                    current_input[:,ni,Vi] = readout.predict(X)*args.dt + current_input[:,ni,Vi]
                 preds3[Ni,:,j,:] = current_input[0] 
                 previous_states = reservoir._compute_netx_state(previous_states, current_input)
             error3 = (Xsn[:,:,start3:(start3+steps),:] - preds3).numpy()
