@@ -37,7 +37,7 @@ python -m An_Example_for_Task_2
 
 Here, we illustrate the structure inference process of the HoGRC framework in a simple case using a GIF: 
 <p align="center">
-<img align="middle" src="https://github.com/CsnowyLstar/HoGRC/blob/main/Simple_example.gif" alt="HoGRC Demo" width="700" />
+<img align="middle" src="https://github.com/CsnowyLstar/HoGRC/blob/main/Simple_example.gif" alt="HoGRC Demo" width="650" />
 </p>
 
 
