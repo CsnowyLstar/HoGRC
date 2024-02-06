@@ -35,10 +35,9 @@ python -m An_Example_for_Task_1
 python -m An_Example_for_Task_2
 ```
 
-<center>
+<div style="text-align: center;">
   <img src="https://github.com/CsnowyLstar/HoGRC/blob/main/Simple_example.gif" width="600">
-</center>
-
+</div>
 
 
 ## Files
