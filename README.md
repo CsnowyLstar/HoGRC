@@ -35,7 +35,7 @@ python -m An_Example_for_Task_1
 python -m An_Example_for_Task_2
 ```
 
-![img](https://github.com/CsnowyLstar/HoGRC/blob/main/Simple_example.gif)
+![alt text](https://github.com/CsnowyLstar/HoGRC/blob/main/Simple_example.gif)
 
 
 ## Files
