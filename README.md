@@ -35,6 +35,8 @@ python -m An_Example_for_Task_1
 python -m An_Example_for_Task_2
 ```
 
+![img](https://github.com/CsnowyLstar/HoGRC/blob/main/Simple_example.gif)
+
 ## Files
 - 'main_L63.py' is HoGRC experiment for the Lorenz63 system, including five parts: hyperparameter setting , data generation, the configuration of higher-order structures, model training and testing.
 - 'main_CL63.py' is HoGRC experiment for the coupled Lorenz system.
