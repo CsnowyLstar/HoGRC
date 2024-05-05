@@ -527,8 +527,9 @@ if __name__ == '__main__':
     Xsn, theta, time_point, edges_in, edges_ex, edges_out, Sd = read_data()
 
     # o3 is used to configure pairwise neighbors, ho3 is used to configure higher-order neighbors.
-    o3 = np.array([30,32,36,50])
-    ho3 = np.array([])
+    # Here is the optimal structural configuration: o3 = np.array([36,50]), ho3 = np.array([30,32])
+    o3 = np.array([36,50])
+    ho3 = np.array([30,32])
 
     nam = ''
     for i in o3:
