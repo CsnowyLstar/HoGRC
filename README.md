@@ -9,6 +9,8 @@ Our framework can not only accurately infer the higher-order structures of the s
 
 This respository provides HoGRC methods implemented in PyTorch. And the experimental data can be generated through code.
 
+- TODO: The current code, combined with Algorithm 1 in the main text, involves manual adjustments and inference of the structure. An algorithm for automatic inference is being developed and will be added to the code soon.
+
 ## Environment 
 To run this project, we will need to set up an environment with Python 3 and install the following Python packages:
 - Python 3.9.7
