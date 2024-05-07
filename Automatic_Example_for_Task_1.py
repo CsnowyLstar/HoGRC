@@ -103,9 +103,7 @@ def HORC(candi):
     experiment.train()
     
     preds,error = experiment.evalue1()
-    #er = np.mean(np.abs(error[:,0,:,Vu]))
     er = np.mean(np.abs(error[:,0,:ntr-args.warm_up,Vu]))
-    #er = np.mean(np.abs(error[:,0,ntr-args.warm_up:,Vu]))
     print("Candidate neighbors", candi[u])
     print("Error:", er)
     return(er)
