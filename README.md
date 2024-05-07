@@ -9,8 +9,6 @@ Our framework can not only accurately infer the higher-order structures of the s
 
 This respository provides HoGRC methods implemented in PyTorch. And the experimental data can be generated through code.
 
-- TODO: The current code, combined with Algorithm 1 in the main text, involves manual adjustments and inference of the structure. An algorithm for automatic inference is being developed and will be added to the code soon.
-
 ## Environment 
 To run this project, we will need to set up an environment with Python 3 and install the following Python packages:
 - Python 3.9.7
@@ -35,6 +33,10 @@ python -m An_Example_for_Task_1
 - 'An_Example_for_Task_2.py' serves as an example for prediction of the coupled FitzHugh-Nagumo system using different methods, and the results are displayed in Figs. 3a and 3c in the main text.
 ```python
 python -m An_Example_for_Task_2
+```
+- 'Automatic_Example_for_Task_1.py' combines the Algorithm 1 of the main text to implement automatic structural inference. It is an automated inference version of the "An_Example_for_Task_1.py" task.
+```python
+python -m Automatic_Example_for_Task_1
 ```
 
 Here, we illustrate the structure inference process of the HoGRC framework in a simple case using a GIF: 
