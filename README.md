@@ -63,3 +63,17 @@ Please refer to the code comments and the "workflow.md" file for detailed execut
 - 'models' folder: used to store model files
 - 'dataset' folder: used to store dataset files
 - 'results' folder: used to store results files
+
+## Citing
+If you use HoGRC in an academic paper, please cite:
+
+@article{li2024higher,
+  title={Higher-order Granger reservoir computing: simultaneously achieving scalable complex structures inference and accurate dynamics prediction},
+  author={Li, Xin and Zhu, Qunxi and Zhao, Chengli and Duan, Xiaojun and Zhao, Bolin and Zhang, Xue and Ma, Huanfei and Sun, Jie and Lin, Wei},
+  journal={Nature Communications},
+  volume={15},
+  number={1},
+  pages={2506},
+  year={2024},
+  publisher={Nature Publishing Group UK London}
+}
