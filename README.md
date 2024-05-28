@@ -67,6 +67,7 @@ Please refer to the code comments and the "workflow.md" file for detailed execut
 ## Citing
 If you use HoGRC in an academic paper, please cite:
 
+```bibtex
 @article{li2024higher,
   title={Higher-order Granger reservoir computing: simultaneously achieving scalable complex structures inference and accurate dynamics prediction},
   author={Li, Xin and Zhu, Qunxi and Zhao, Chengli and Duan, Xiaojun and Zhao, Bolin and Zhang, Xue and Ma, Huanfei and Sun, Jie and Lin, Wei},
