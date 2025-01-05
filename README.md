@@ -44,6 +44,7 @@ Here, we illustrate the structure inference process of the HoGRC framework in a 
 <img align="middle" src="https://github.com/CsnowyLstar/HoGRC/blob/main/Simple_example.gif" alt="HoGRC Demo" width="650" />
 </p>
 
+It should be noted that the input information for the HoGRC framework is not limited to polynomial forms. It can comprise arbitrary nonlinear functions or interactions that cannot be represented by elementary functions. As the inputs are structural information (represented by simplicial complexes), the exact type of the interaction dynamics is learned through RC.
 
 ## Files
 - 'main_L63.py' is HoGRC experiment for the Lorenz63 system, including five parts: hyperparameter setting , data generation, the configuration of higher-order structures, model training and testing.
